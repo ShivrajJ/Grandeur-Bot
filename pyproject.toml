@@ -1,0 +1,10 @@
+[tool]
+[tool.poetry]
+authors = ["Your Name <you@example.com>"]
+name = "root"
+version = "0.0.0"
+description = "ABC"
+[tool.poetry.dependencies]
+"discord.py" = "*"
+python = "^3.8"
+flask = "^1.1"
