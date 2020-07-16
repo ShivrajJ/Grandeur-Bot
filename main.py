@@ -2,6 +2,7 @@ import discord
 import sys
 import traceback as trace
 import os
+import asyncio
 import json
 import math
 from keep_alive import keep_alive
@@ -65,10 +66,10 @@ async def on_message(message):
       StatList = Parameters["Stats"].strip("()").replace(" ", "").split(",")
       Parameters["Stats"] = {StatTemplate[i]:StatList[i] for i in range(len(StatList))}
       defaults = ["Undefined", "Undefined", "\u200b", "0", "D", "Undefined", "0", "\u200b", "https://i.imgur.com/xUWfFdw.png", "Stats"]
-      for k, v in enumerate(Parameters):
+      for i, (k, v) in enumerate(Parameters.items()):
         if v == "0":
           Parameters[k] = defaults[i]
-      await message.channel.send(str([str(k + ": " + v) for k, v in Parameters]).strip("[]"))
+      await message.channel.send(str([k + ": " + str(v).strip("{}") for k, v in Parameters.items()]).strip("[]").replace("'", ""))
       
       await message.channel.send("Is this correct? (yes/no)")
       def check1(m):
