@@ -52,9 +52,9 @@ async def on_message(message):
       else:
         MainTemplate = ["UserID", "Name", "Description", "XP", "Rank", "Alignment", "Money", "Items", "StatImage", "Stats"]
         Parameters = {}
-        for i in MainTemplate:
+        for n, i in enumerate(MainTemplate):
           await message.channel.send("Enter %s:" % i)
-          if i == 9:
+          if n == 9:
               await message.channel.send("(Power, Speed, Intelligence, Technique, Skillfulness)")
           def check(m):
               return m.author == message.author and m.channel == message.channel
@@ -63,7 +63,7 @@ async def on_message(message):
           except asyncio.TimeoutError:
               await message.channel.send("Timed out! Try again.")
           else:
-              Parameters[MainTemplate[i]] = "{.content}".format(reply)
+              Parameters[MainTemplate[n]] = "{.content}".format(reply)
         print(Parameters)
         StatTemplate = ["Power", "Speed", "Intelligence", "Technique", "Skillfulness"]
         StatList = Parameters["Stats"].strip("()").replace(" ", "").split(",")
