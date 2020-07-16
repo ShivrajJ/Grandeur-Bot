@@ -131,7 +131,7 @@ async def on_message(message):
           def check2(m):
             return m.author == message.author and m.channel == message.channel
           try:
-            reply = client.wait_for("message", timeout=50.0, check = check2)
+            reply = await client.wait_for("message", timeout=50.0, check = check2)
           except asyncio.TimeoutError:
             await message.channel.send("Timed Out! Please run the command again.")
           else:
@@ -184,7 +184,7 @@ async def on_message(message):
       await message.channel.send("```" + table + "```")
   if message.content.find("$approval") != -1:
     guild = message.guild
-    if message.author.roles[-1] < guild.get_role(691276640629686334):
+    if not message.author.guild_permissions.manage_channels:
       await message.channel.send("You are not permitted to create a channel! Please contact a Staff Member.")
     else:
       if message.content[10:14] == "help":
@@ -202,7 +202,7 @@ async def on_message(message):
         channel = await guild.create_text_channel(name, overwrites = overwrites, category=category)
   if message.content.find("$remove") != -1:
     guild = message.guild
-    if message.author.roles[-1] < guild.get_role(691276640629686334):
+    if not message.author.guild_permissions.manage_channels:
       await message.channel.send("You are not permitted to delete a channel! Please contact a Staff Member.")
     else:
       if message.content[8:12] == "help":
