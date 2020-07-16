@@ -29,9 +29,9 @@ async def on_error(on_message, ctx):
 async def on_message(message):
   if message.author == client.user:
     return
-  if message.content.startswith("$reverse"):
+  if message.content.find("$reverse") != -1:
     await message.channel.send(message.content[-1:8:-1])
-  if message.content.startswith("$help"):
+  if message.content.find("$help") != -1:
     embed = discord.Embed(title="Help", description="All commands are listed here, but for the usage of each, type the command and then type help in front of the command. Eg- $char help.", color=0x00ffff)
     embed.add_field(name="$newchar",value="Adds a new Character to the database. Mod Only Command.",inline=True)
     embed.add_field(name="$char",value="Shows the Character's Card",inline=True)
@@ -41,7 +41,7 @@ async def on_message(message):
     embed.add_field(name="$remove",value="Removes an Approval Channel. Mod Only Command.",inline=True)
     embed.add_field(name="$reverse",value="Reverses whatever message is written after the command.",inline=True)  
     await message.channel.send(embed=embed)
-  if message.content.startswith("$newchar ") or message.content == "$newchar": #Making Character Entry into JSON file
+  if message.content.find("$newchar") != -1: #Making Character Entry into JSON file
     guild = message.guild
     if message.author.roles[-1] < guild.get_role(691276640629686334):
       await message.channel.send("You are not permitted to create a Character in the Database! Please contact a Staff Member.")
@@ -71,7 +71,7 @@ async def on_message(message):
           data[str(client.get_user(int(x[0].strip("<@!>"))))] = chardetails
           with open("chardata.json", "w") as datasheet:
             json.dump(data, datasheet)
-  if message.content.startswith("$char "):
+  if message.content.find("$char") != -1:
     if message.content[6:10] == "help":
       await message.channel.send("Mention the user next to the command.")
     else:
@@ -100,7 +100,7 @@ async def on_message(message):
         embed.add_field(name = "\u200b", value = "\u200b", inline = True)
         embed.add_field(name = "Skillfulness", value = data[user]["Stats"]["Skillfulness"], inline = True)
         await message.channel.send(embed=embed)
-  if message.content.startswith("$modchar "):
+  if message.content.find("$modchar") != -1:
     guild = message.guild
     if message.author.roles[-1] < guild.get_role(691276640629686334):
       await message.channel.send("You are not permitted to modify characters! Please contact a Staff Member.")
@@ -124,7 +124,7 @@ async def on_message(message):
           json.dump(data, datasheet)
         await message.channel.send("Done!")
         await message.channel.send(x[1] + " has been changed to " + str(x[2]))
-  if message.content.startswith("$xp "):
+  if message.content.find("$xp") != -1:
     if message.content[4:8] == "help":
       await message.channel.send("Enter one of the following next to the commands: All, Hero, Villain, Rogue.")
     else:
@@ -156,7 +156,7 @@ async def on_message(message):
         else:
           table += "╚══════╩" + "═"*maxlenname + "╧" + "═"*maxlenxp + "╧" + "═"*maxlenalign + "╧══════╝"
       await message.channel.send("```" + table + "```")
-  if message.content.startswith("$approval "):
+  if message.content.find("$approval") != -1:
     guild = message.guild
     if message.author.roles[-1] < guild.get_role(691276640629686334):
       await message.channel.send("You are not permitted to create a channel! Please contact a Staff Member.")
@@ -174,7 +174,7 @@ async def on_message(message):
           guild.get_role(staff):discord.PermissionOverwrite(read_messages = True, send_messages = True)
         }
         channel = await guild.create_text_channel(name, overwrites = overwrites, category=category)
-  if message.content.startswith("$remove "):
+  if message.content.find("$remove") != -1:
     guild = message.guild
     if message.author.roles[-1] < guild.get_role(691276640629686334):
       await message.channel.send("You are not permitted to delete a channel! Please contact a Staff Member.")
