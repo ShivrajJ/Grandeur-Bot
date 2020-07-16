@@ -82,11 +82,11 @@ async def on_message(message):
         if "{.content}".format(reply) == "yes":
           with open("chardata.json", "r") as datasheet:
             data = json.load(datasheet)
-          data[str(client.get_user(int(x[0].strip("<@!>"))))] = Parameters
+          data[str(client.get_user(int(Parameters["UserID"].strip("<@!>"))))] = Parameters
           with open("chardata.json", "w") as datasheet:
             json.dump(data, datasheet)
   if message.content.find("$char") != -1:
-    if message.content[6:10] == "help":
+    if message.content[6:10] == "help" or len(message.content) == 5:
       await message.channel.send("Mention the user next to the command.")
     else:
       user = message.content[6:]
@@ -116,28 +116,40 @@ async def on_message(message):
         await message.channel.send(embed=embed)
   if message.content.find("$modchar") != -1:
     guild = message.guild
-    if message.author.roles[-1] < guild.get_role(691276640629686334):
+    if not message.author.guild_permissions.manage_channels:
       await message.channel.send("You are not permitted to modify characters! Please contact a Staff Member.")
     else:
       if message.content[9:13] == "help":
-        await message.channel.send("Mention the user, list the entry to be change, then new value: as such -> MENTION|ENTRY(Anything from Name, Description, XP, Rank, Alignment, Money, Items, StatImage, Stats[Only one from Power, Speed, Intelligence, Technique, Skillfulness]|NEW VALUE. \n Ex. $modchar @ABC|Stats[Power]|2")
+        await message.channel.send("Mention the user, list the entry to be changed, then new value: as such -> MENTION|ENTRY(Anything from Name, Description, XP, Rank, Alignment, Money, Items, StatImage, Stats[Only one from Power, Speed, Intelligence, Technique, Skillfulness]|NEW VALUE. \n Ex. $modchar @ABC|Stats[Power]|2")
       else:
-        x = message.content[10:].split("|")
-        user = str(client.get_user(int(x[0].strip("<@!>"))))
+        ModData = {}
+        ModTemplate = ["User(Mention)", "Entry", "New Value"]
+        for n, i in enumerate(ModTemplate):
+          await message.channel.send("Enter the {abc}".format(abc=i))
+          if n == 1:
+            await message.channel.send("Name, Description, XP, Rank, Alignment, Money, Items, StatImage, Stats[Only one from Power, Speed, Intelligence, Technique, Skillfulness]")
+          def check2(m):
+            return m.author == message.author and m.channel == message.channel
+          try:
+            reply = client.wait_for("message", timeout=50.0, check = check2)
+          except asyncio.TimeoutError:
+            await message.channel.send("Timed Out! Please run the command again.")
+          else:
+            ModData[ModTemplate[n]] = "{.content}".format(reply)
+        user = str(client.get_user(int(ModData["User(Mention)"].strip("<@!>"))))
         with open("chardata.json", "r") as datasheet:
           data = json.load(datasheet)
-        entry = x[1]
-        value = x[2]
+        entry = ModData["Entry"]
+        value = ModData["New Value"]
         print(value)
-        if "[" in entry:
-          entry = entry.strip("]").split("[")
-          data[user][entry[0]][entry[1]] = value
+        if entry in ["Power", "Speed", "Intelligence", "Technique", "Skillfulness"]:
+          data[user]["Stats"][entry] = value
         else:
           data[user][entry] = value
         with open("chardata.json", "w") as datasheet:
           json.dump(data, datasheet)
         await message.channel.send("Done!")
-        await message.channel.send(x[1] + " has been changed to " + str(x[2]))
+        await message.channel.send(entry + " has been changed to " + str(value))
   if message.content.find("$xp") != -1:
     if message.content[4:8] == "help":
       await message.channel.send("Enter one of the following next to the commands: All, Hero, Villain, Rogue.")
