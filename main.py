@@ -50,11 +50,12 @@ async def on_message(message):
       if message.content[9:13] == "help":
         await message.channel.send("Enter Character Details in the format: Username(Mention)|Name|Description|XP|Rank|Alignment(Hero, Villain or Rogue)|Money|Items|StatImage(URL)|Stats(Power, Speed, Intelligence, Technique, Skillfulness). Manually default to 0 for blank.")
       else:
-        template1 = ["UserID", "Name", "Description", "XP", "Rank", "Alignment", "Money", "Items", "StatImage", "Stats"]
-        Parameters = []
-        for i in template1:
+        MainTemplate = ["UserID", "Name", "Description", "XP", "Rank", "Alignment", "Money", "Items", "StatImage", "Stats"]
+        Parameters = {}
+        for i in MainTemplate:
           await message.channel.send("Enter %s:" % i)
-          
+          if i == 9:
+              await message.channel.send("(Power, Speed, Intelligence, Technique, Skillfulness)")
           def check(m):
               return m.author == message.author and m.channel == message.channel
           try:
@@ -62,16 +63,15 @@ async def on_message(message):
           except asyncio.TimeoutError:
               await message.channel.send("Timed out! Try again.")
           else:
-              Parameters.append("{.content}".format(reply))
+              Parameters[MainTemplate[i]] = "{.content}".format(reply)
         print(Parameters)
-        #  template2 = ["Power", "Speed", "Intelligence", "Technique", "Skillfulness"]
-        #  defaults = ["Undefined", "Undefined", "\u200b", "0", "D", "Undefined", "0", "\u200b", "https://i.imgur.com/xUWfFdw.png", "Stats"]
-        #  for i, e in enumerate(x):
-        #   if e == "0":
-        #      x[i] = defaults[i]
-        #  x[9] = {template2[i]:x[9].strip("()").replace(" ", "").split(",")[i] for i in range(0, len(x[9].strip("()").replace(" ", "").split(",")))}
-        
-        #  chardetails = {template1[i]:x[i] for i in range(1, len(x))}
+        StatTemplate = ["Power", "Speed", "Intelligence", "Technique", "Skillfulness"]
+        StatList = Parameters["Stats"].strip("()").replace(" ", "").split(",")
+        Parameters["Stats"] = {StatTemplate[i]:StatList[i] for i in range(len(StatList))}
+        defaults = ["Undefined", "Undefined", "\u200b", "0", "D", "Undefined", "0", "\u200b", "https://i.imgur.com/xUWfFdw.png", "Stats"]
+        for k, v in enumerate(Parameters):
+           if v == "0":
+              Parameters[k] = defaults[i]
 
         #  await message.channel.send(str(chardetails))
         #  with open("chardata.json", "r") as datasheet:
