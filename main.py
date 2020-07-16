@@ -49,28 +49,35 @@ async def on_message(message):
       if message.content[9:13] == "help":
         await message.channel.send("Enter Character Details in the format: Username(Mention)|Name|Description|XP|Rank|Alignment(Hero, Villain or Rogue)|Money|Items|StatImage(URL)|Stats(Power, Speed, Intelligence, Technique, Skillfulness). Manually default to 0 for blank.")
       else:
-        inputdetails = message.content[9:] #Taking parameters
-        if inputdetails.count("|") != 9:
-          await message.channel.send("Please enter all the values! Enter 0 to default a value to blank.")
-        else:
-          x = inputdetails.split("|", 9)
-          print(x)
-          template1 = ["UserID", "Name", "Description", "XP", "Rank", "Alignment", "Money", "Items", "StatImage", "Stats"]
-          template2 = ["Power", "Speed", "Intelligence", "Technique", "Skillfulness"]
-          defaults = ["Undefined", "Undefined", "\u200b", "0", "D", "Undefined", "0", "\u200b", "https://i.imgur.com/xUWfFdw.png", "Stats"]
-          for i, e in enumerate(x):
-           if e == "0":
-              x[i] = defaults[i]
-          x[9] = {template2[i]:x[9].strip("()").replace(" ", "").split(",")[i] for i in range(0, len(x[9].strip("()").replace(" ", "").split(",")))}
+        template1 = ["UserID", "Name", "Description", "XP", "Rank", "Alignment", "Money", "Items", "StatImage", "Stats"]
+        Parameters = []
+        for i in template1:
+          await message.channel.send("Enter %s:" % i)
+          
+          def check(m):
+              return m.author == message.author and m.channel == message.channel
+          try:
+            reply = await client.wait_for('message', timeout = 50.0, check = check)
+          except asyncio.TimeoutError:
+              await message.channel.send("Timed out! Try again.")
+          else:
+              Parameters.append("{.content}".format(reply))
+        print(Parameters)
+        #  template2 = ["Power", "Speed", "Intelligence", "Technique", "Skillfulness"]
+        #  defaults = ["Undefined", "Undefined", "\u200b", "0", "D", "Undefined", "0", "\u200b", "https://i.imgur.com/xUWfFdw.png", "Stats"]
+        #  for i, e in enumerate(x):
+        #   if e == "0":
+        #      x[i] = defaults[i]
+        #  x[9] = {template2[i]:x[9].strip("()").replace(" ", "").split(",")[i] for i in range(0, len(x[9].strip("()").replace(" ", "").split(",")))}
         
-          chardetails = {template1[i]:x[i] for i in range(1, len(x))}
+        #  chardetails = {template1[i]:x[i] for i in range(1, len(x))}
 
-          await message.channel.send(str(chardetails))
-          with open("chardata.json", "r") as datasheet:
-            data = json.load(datasheet)
-          data[str(client.get_user(int(x[0].strip("<@!>"))))] = chardetails
-          with open("chardata.json", "w") as datasheet:
-            json.dump(data, datasheet)
+        #  await message.channel.send(str(chardetails))
+        #  with open("chardata.json", "r") as datasheet:
+        #    data = json.load(datasheet)
+        #  data[str(client.get_user(int(x[0].strip("<@!>"))))] = chardetails
+        #  with open("chardata.json", "w") as datasheet:
+        #    json.dump(data, datasheet)
   if message.content.find("$char") != -1:
     if message.content[6:10] == "help":
       await message.channel.send("Mention the user next to the command.")
