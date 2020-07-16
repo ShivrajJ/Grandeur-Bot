@@ -51,24 +51,25 @@ async def on_message(message):
       for n, i in enumerate(MainTemplate):
         await message.channel.send("Enter %s:" % i)
         if n == 9:
-            await message.channel.send("(Power, Speed, Intelligence, Technique, Skillfulness)")
+          await message.channel.send("(Power, Speed, Intelligence, Technique, Skillfulness)")
         def check(m):
-            return m.author == message.author and m.channel == message.channel
+          return m.author == message.author and m.channel == message.channel
         try:
           reply = await client.wait_for('message', timeout = 50.0, check = check)
         except asyncio.TimeoutError:
-            await message.channel.send("Timed out! Try again.")
+          await message.channel.send("Timed out! Try again.")
         else:
-            Parameters[MainTemplate[n]] = "{.content}".format(reply)
+          Parameters[MainTemplate[n]] = "{.content}".format(reply)
       print(Parameters)
       StatTemplate = ["Power", "Speed", "Intelligence", "Technique", "Skillfulness"]
       StatList = Parameters["Stats"].strip("()").replace(" ", "").split(",")
       Parameters["Stats"] = {StatTemplate[i]:StatList[i] for i in range(len(StatList))}
       defaults = ["Undefined", "Undefined", "\u200b", "0", "D", "Undefined", "0", "\u200b", "https://i.imgur.com/xUWfFdw.png", "Stats"]
       for k, v in enumerate(Parameters):
-         if v == "0":
-            Parameters[k] = defaults[i]
+        if v == "0":
+          Parameters[k] = defaults[i]
       await message.channel.send(str([str(k + ": " + v) for k, v in Parameters]).strip("[]"))
+      
       await message.channel.send("Is this correct? (yes/no)")
       def check1(m):
         return m.author == message.author and m.channel == message.channel and m.content in ("yes", "no")
@@ -76,13 +77,13 @@ async def on_message(message):
         reply = await client.wait_for('message', timeout = 50.0, check = check1)
       except asyncio.TimeoutError:
         await message.channel.send("Timed out! Try again.")
-        else:
-          if "{.content}".format(reply) == "yes":
-            with open("chardata.json", "r") as datasheet:
-              data = json.load(datasheet)
-            data[str(client.get_user(int(x[0].strip("<@!>"))))] = Parameters
-            with open("chardata.json", "w") as datasheet:
-              json.dump(data, datasheet)
+      else:
+        if "{.content}".format(reply) == "yes":
+          with open("chardata.json", "r") as datasheet:
+            data = json.load(datasheet)
+          data[str(client.get_user(int(x[0].strip("<@!>"))))] = Parameters
+          with open("chardata.json", "w") as datasheet:
+            json.dump(data, datasheet)
   if message.content.find("$char") != -1:
     if message.content[6:10] == "help":
       await message.channel.send("Mention the user next to the command.")
