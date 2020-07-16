@@ -43,7 +43,8 @@ async def on_message(message):
     await message.channel.send(embed=embed)
   if message.content.find("$newchar") != -1: #Making Character Entry into JSON file
     guild = message.guild
-    if message.author.roles[-1] < guild.get_role(691276640629686334):
+    #if message.author.roles[-1] < guild.get_role(691276640629686334):
+    if not message.author.guild_permissions.manage_channels:
       await message.channel.send("You are not permitted to create a Character in the Database! Please contact a Staff Member.")
     else:
       if message.content[9:13] == "help":
