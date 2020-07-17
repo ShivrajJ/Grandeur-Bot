@@ -160,21 +160,30 @@ async def on_message(message):
         value = ModData["New Value"]
         print(value)
         if entry in ["Power", "Speed", "Intelligence", "Technique", "Skillfulness"]:
-          Stats = "".join(data[user]["Stats"])
+          Stats = "".join(data[user]["Stats"].values())
+          print(Stats)
           for i, v in enumerate(["Power", "Speed", "Intelligence", "Technique", "Skillfulness"]):
+            print(v, entry)
             if v == entry:
-              Stats.replace(Stats[i], value)
+              Stats = Stats[:i] + value + Stats[i+1:]
+              print(Stats, "New")
           statfile = open("CompletedCharts.txt", "r")
-          for i in range(len(statfile.readlines())):
+          statlength = len(statfile.readlines())
+          statfile.seek(0)
+          for i in range(statlength):
             CompleteStatCharts = statfile.readline()
+            print(CompleteStatCharts, "readline")
+            print(Stats)
             if Stats in CompleteStatCharts:
               break
+          statfile.seek(0)
           if Stats in statfile.read():
             data[user]["StatImage"] = CompleteStatCharts.replace(Stats + " - ", "")
           else:
             with open("PendingCharts.txt", "w") as pending:
               pending.write("\n" + Stats)
           data[user]["Stats"][entry] = value
+          print(data[user]["StatImage"])
         else:
           data[user][entry] = value
         with open("chardata.json", "w") as datasheet:
