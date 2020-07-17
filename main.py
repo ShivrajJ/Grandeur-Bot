@@ -7,6 +7,8 @@ import json
 import math
 from keep_alive import keep_alive
 
+
+
 client = discord.Client()
 
 @client.event
@@ -30,9 +32,9 @@ async def on_error(on_message, ctx):
 async def on_message(message):
   if message.author == client.user:
     return
-  if message.content.find("$reverse") != -1:
+  if message.content.find("$reverse") == 0:
     await message.channel.send(message.content[-1:8:-1])
-  if message.content.find("$help") != -1:
+  if message.content.find("$help") == 0:
     embed = discord.Embed(title="Help", description="All commands are listed here, but for the usage of each, type the command and then type help in front of the command. Eg- $char help.", color=0x00ffff)
     embed.add_field(name="$newchar",value="Adds a new Character to the database. Mod Only Command.",inline=True)
     embed.add_field(name="$char",value="Shows the Character's Card",inline=True)
@@ -42,12 +44,12 @@ async def on_message(message):
     embed.add_field(name="$remove",value="Removes an Approval Channel. Mod Only Command.",inline=True)
     embed.add_field(name="$reverse",value="Reverses whatever message is written after the command.",inline=True)  
     await message.channel.send(embed=embed)
-  if message.content.find("$newchar") != -1: #Making Character Entry into JSON file
+  if message.content.find("$newchar") == 0: #Making Character Entry into JSON file
     guild = message.guild
     if not message.author.guild_permissions.manage_channels:
       await message.channel.send("You are not permitted to create a Character in the Database! Please contact a Staff Member.")
     else:
-      MainTemplate = ["UserID", "Name", "Description", "XP", "Rank", "Alignment", "Money", "Items", "StatImage", "Stats"]
+      MainTemplate = ["UserID", "Name", "Description", "XP", "Rank", "Alignment", "Money", "Items", "Stats"]
       Parameters = {}
       for n, i in enumerate(MainTemplate):
         await message.channel.send("Enter %s:" % i)
@@ -65,12 +67,24 @@ async def on_message(message):
       StatTemplate = ["Power", "Speed", "Intelligence", "Technique", "Skillfulness"]
       StatList = Parameters["Stats"].strip("()").replace(" ", "").split(",")
       Parameters["Stats"] = {StatTemplate[i]:StatList[i] for i in range(len(StatList))}
-      defaults = ["Undefined", "Undefined", "\u200b", "0", "D", "Undefined", "0", "\u200b", "https://i.imgur.com/xUWfFdw.png", "Stats"]
+      defaults = ["Undefined", "Undefined", "\u200b", "0", "D", "Undefined", "0", "\u200b", "Stats"]
+      Stats = "".join(StatsList)
+      statfile = open("CompletedCharts.txt", "r")
+      for i in range(len(statfile.readlines())):
+        CompleteStatCharts = statfile.readline()
+        if Stats in CompleteStatCharts:
+          break
+      if Stats in read(statfile):
+        Parameters["StatImage"] = CompleteStatCharts.replace(Stats + " - ", "")
+      else:
+        Parameters["StatImage"] = "https://i.imgur.com/xUWfFdw.png"
+        with open("PendingCharts.txt", "w") as pending:
+          pending.write("\n" + Stats)
+      statfile.close()
       for i, (k, v) in enumerate(Parameters.items()):
         if v == "0":
           Parameters[k] = defaults[i]
       await message.channel.send(str([k + ": " + str(v).strip("{}") for k, v in Parameters.items()]).strip("[]").replace("'", ""))
-      
       await message.channel.send("Is this correct? (yes/no)")
       def check1(m):
         return m.author == message.author and m.channel == message.channel and m.content in ("yes", "no")
@@ -85,7 +99,7 @@ async def on_message(message):
           data[str(client.get_user(int(Parameters["UserID"].strip("<@!>"))))] = Parameters
           with open("chardata.json", "w") as datasheet:
             json.dump(data, datasheet)
-  if message.content.find("$char") != -1:
+  if message.content.find("$char") == 0:
     if message.content[6:10] == "help" or len(message.content) == 5:
       await message.channel.send("Mention the user next to the command.")
     else:
@@ -114,7 +128,10 @@ async def on_message(message):
         embed.add_field(name = "\u200b", value = "\u200b", inline = True)
         embed.add_field(name = "Skillfulness", value = data[user]["Stats"]["Skillfulness"], inline = True)
         await message.channel.send(embed=embed)
-  if message.content.find("$modchar") != -1:
+  if message.content.find("$pending") == 0:
+    with open("PendingCharts.txt", "r") as pending:
+      await message.channel.send(pending.read())
+  if message.content.find("$modchar") == 0:
     guild = message.guild
     if not message.author.guild_permissions.manage_channels:
       await message.channel.send("You are not permitted to modify characters! Please contact a Staff Member.")
@@ -143,6 +160,20 @@ async def on_message(message):
         value = ModData["New Value"]
         print(value)
         if entry in ["Power", "Speed", "Intelligence", "Technique", "Skillfulness"]:
+          Stats = "".join(data[user]["Stats"])
+          for i, v in enumerate(["Power", "Speed", "Intelligence", "Technique", "Skillfulness"]):
+            if v == entry:
+              Stats.replace(Stats[i], value)
+          statfile = open("CompletedCharts.txt", "r")
+          for i in range(len(statfile.readlines())):
+            CompleteStatCharts = statfile.readline()
+            if Stats in CompleteStatCharts:
+              break
+          if Stats in read(statfile):
+            data[user]["StatImage"] = CompleteStatCharts.replace(Stats + " - ", "")
+          else:
+            with open("PendingCharts.txt", "w") as pending:
+              pending.write("\n" + Stats)
           data[user]["Stats"][entry] = value
         else:
           data[user][entry] = value
@@ -150,7 +181,7 @@ async def on_message(message):
           json.dump(data, datasheet)
         await message.channel.send("Done!")
         await message.channel.send(entry + " has been changed to " + str(value))
-  if message.content.find("$xp") != -1:
+  if message.content.find("$xp") == 0:
     if message.content[4:8] == "help":
       await message.channel.send("Enter one of the following next to the commands: All, Hero, Villain, Rogue.")
     else:
@@ -182,7 +213,7 @@ async def on_message(message):
         else:
           table += "╚══════╩" + "═"*maxlenname + "╧" + "═"*maxlenxp + "╧" + "═"*maxlenalign + "╧══════╝"
       await message.channel.send("```" + table + "```")
-  if message.content.find("$approval") != -1:
+  if message.content.find("$approval") == 0:
     guild = message.guild
     if not message.author.guild_permissions.manage_channels:
       await message.channel.send("You are not permitted to create a channel! Please contact a Staff Member.")
@@ -200,7 +231,7 @@ async def on_message(message):
           guild.get_role(staff):discord.PermissionOverwrite(read_messages = True, send_messages = True)
         }
         channel = await guild.create_text_channel(name, overwrites = overwrites, category=category)
-  if message.content.find("$remove") != -1:
+  if message.content.find("$remove") == 0:
     guild = message.guild
     if not message.author.guild_permissions.manage_channels:
       await message.channel.send("You are not permitted to delete a channel! Please contact a Staff Member.")
