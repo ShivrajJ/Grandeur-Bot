@@ -68,7 +68,7 @@ async def on_message(message):
       StatList = Parameters["Stats"].strip("()").replace(" ", "").split(",")
       Parameters["Stats"] = {StatTemplate[i]:StatList[i] for i in range(len(StatList))}
       defaults = ["Undefined", "Undefined", "\u200b", "0", "D", "Undefined", "0", "\u200b", "Stats"]
-      Stats = "".join(StatsList)
+      Stats = "".join(StatList)
       statfile = open("CompletedCharts.txt", "r")
       for i in range(len(statfile.readlines())):
         CompleteStatCharts = statfile.readline()
