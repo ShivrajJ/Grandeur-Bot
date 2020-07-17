@@ -113,24 +113,27 @@ async def on_message(message):
         user = str(client.get_user(int(user.strip("<@!>"))))
         with open("chardata.json", "r") as datasheet:
           data = json.load(datasheet)
-        embed = discord.Embed(title = data[user]["Name"], color = 0x00ffff, description = data[user]["Description"])
-        embed.set_image(url=data[user]["StatImage"])
-        embed.add_field(name = "XP", value = data[user]["XP"], inline = True)
-        embed.add_field(name = "Money", value = data[user]["Money"], inline = True)
-        embed.add_field(name = "Rank", value = data[user]["Rank"], inline = True)
-        embed.add_field(name = "Alignment", value = data[user]["Alignment"], inline = True)
-        embed.add_field(name = "Items", value = data[user]["Items"], inline = True)
-        embed.add_field(name = "\u200b", value = "\u200b", inline = True)
-        embed.add_field(name = "\u200b", value = "\u200b", inline = True)
-        embed.add_field(name = "Power", value = data[user]["Stats"]["Power"], inline = True)
-        embed.add_field(name = "\u200b", value = "\u200b", inline = True)
-        embed.add_field(name = "Speed", value = data[user]["Stats"]["Speed"], inline = True)
-        embed.add_field(name = "\u200b", value = "\u200b", inline = True)
-        embed.add_field(name = "Intelligence", value = data[user]["Stats"]["Intelligence"], inline = True)
-        embed.add_field(name = "Technique", value = data[user]["Stats"]["Technique"], inline = True)
-        embed.add_field(name = "\u200b", value = "\u200b", inline = True)
-        embed.add_field(name = "Skillfulness", value = data[user]["Stats"]["Skillfulness"], inline = True)
-        await message.channel.send(embed=embed)
+        try:  
+          embed = discord.Embed(title = data[user]["Name"], color = 0x00ffff, description = data[user]["Description"])
+          embed.set_image(url=data[user]["StatImage"])
+          embed.add_field(name = "XP", value = data[user]["XP"], inline = True)
+          embed.add_field(name = "Money", value = data[user]["Money"], inline = True)
+          embed.add_field(name = "Rank", value = data[user]["Rank"], inline = True)
+          embed.add_field(name = "Alignment", value = data[user]["Alignment"], inline = True)
+          embed.add_field(name = "Items", value = data[user]["Items"], inline = True)
+          embed.add_field(name = "\u200b", value = "\u200b", inline = True)
+          embed.add_field(name = "\u200b", value = "\u200b", inline = True)
+          embed.add_field(name = "Power", value = data[user]["Stats"]["Power"], inline = True)
+          embed.add_field(name = "\u200b", value = "\u200b", inline = True)
+          embed.add_field(name = "Speed", value = data[user]["Stats"]["Speed"], inline = True)
+          embed.add_field(name = "\u200b", value = "\u200b", inline = True)
+          embed.add_field(name = "Intelligence", value = data[user]["Stats"]["Intelligence"], inline = True)
+          embed.add_field(name = "Technique", value = data[user]["Stats"]["Technique"], inline = True)
+          embed.add_field(name = "\u200b", value = "\u200b", inline = True)
+          embed.add_field(name = "Skillfulness", value = data[user]["Stats"]["Skillfulness"], inline = True)
+          await message.channel.send(embed=embed)
+        except KeyError:
+          await message.channel.send("That user does not have a character")
   if message.content.find("$pending") == 0:
     with open("PendingCharts.txt", "r") as pending:
       await message.channel.send(pending.read())
@@ -144,6 +147,7 @@ async def on_message(message):
       else:
         ModData = {}
         ModTemplate = ["User(Mention)", "Entry", "New Value"]
+        ValidEntry = ["Name", "Description", "XP", "Rank", "Alignment", "Money", "Items", "StatImage", "Power", "Intelligence", "Skillfulness", "Technique", "Speed"]
         for n, i in enumerate(ModTemplate):
           await message.channel.send("Enter the {abc}".format(abc=i))
           if n == 1:
@@ -156,37 +160,40 @@ async def on_message(message):
             await message.channel.send("Timed Out! Please run the command again.")
           else:
             ModData[ModTemplate[n]] = "{.content}".format(reply)
-        user = str(client.get_user(int(ModData["User(Mention)"].strip("<@!>"))))
-        with open("chardata.json", "r") as datasheet:
-          data = json.load(datasheet)
-        entry = ModData["Entry"]
-        value = ModData["New Value"]
-        print(value)
-        if entry in ["Power", "Intelligence", "Skillfulness", "Technique", "Speed"]:
-          Stats = "".join(data[user]["Stats"].values())
-          for i, v in enumerate(["Power", "Intelligence", "Skillfulness", "Technique", "Speed"]):
-            if v == entry:
-              Stats = Stats[:i] + value + Stats[i+1:]
-          statfile = open("CompletedCharts.txt", "r")
-          statlength = len(statfile.readlines())
-          statfile.seek(0)
-          for i in range(statlength):
-            CompleteStatCharts = statfile.readline()
-            if Stats in CompleteStatCharts:
-              break
-          statfile.seek(0)
-          if Stats in statfile.read():
-            data[user]["StatImage"] = CompleteStatCharts.replace(Stats + " - ", "")
+        if ModData["Entry"] in ValidEntry:
+          user = str(client.get_user(int(ModData["User(Mention)"].strip("<@!>"))))
+          with open("chardata.json", "r") as datasheet:
+            data = json.load(datasheet)
+          entry = ModData["Entry"].capitalize()
+          value = ModData["New Value"]
+          print(value)
+          if entry in ["Power", "Intelligence", "Skillfulness", "Technique", "Speed"]:
+            Stats = "".join(data[user]["Stats"].values())
+            for i, v in enumerate(["Power", "Intelligence", "Skillfulness", "Technique", "Speed"]):
+              if v == entry:
+                Stats = Stats[:i] + value + Stats[i+1:]
+            statfile = open("CompletedCharts.txt", "r")
+            statlength = len(statfile.readlines())
+            statfile.seek(0)
+            for i in range(statlength):
+              CompleteStatCharts = statfile.readline()
+              if Stats in CompleteStatCharts:
+                break
+            statfile.seek(0)
+            if Stats in statfile.read():
+              data[user]["StatImage"] = CompleteStatCharts.replace(Stats + " - ", "")
+            else:
+              with open("PendingCharts.txt", "w") as pending:
+                pending.write("\n" + Stats)
+            data[user]["Stats"][entry] = value
           else:
-            with open("PendingCharts.txt", "w") as pending:
-              pending.write("\n" + Stats)
-          data[user]["Stats"][entry] = value
+            data[user][entry] = value
+          with open("chardata.json", "w") as datasheet:
+            json.dump(data, datasheet)
+          await message.channel.send("Done!")
+          await message.channel.send(entry + " has been changed to " + str(value))
         else:
-          data[user][entry] = value
-        with open("chardata.json", "w") as datasheet:
-          json.dump(data, datasheet)
-        await message.channel.send("Done!")
-        await message.channel.send(entry + " has been changed to " + str(value))
+          await message.channel.send("Invalid Entry. Please check the spelling and try again!")
   if message.content.find("$xp") == 0:
     if message.content[4:8] == "help":
       await message.channel.send("Enter one of the following next to the commands: All, Hero, Villain, Rogue.")
