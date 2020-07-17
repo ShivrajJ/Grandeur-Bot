@@ -70,10 +70,13 @@ async def on_message(message):
       defaults = ["Undefined", "Undefined", "\u200b", "0", "D", "Undefined", "0", "\u200b", "Stats"]
       Stats = "".join(StatList)
       statfile = open("CompletedCharts.txt", "r")
-      for i in range(len(statfile.readlines())):
+      statlength = len(statfile.readlines())
+      statfile.seek(0)
+      for i in range(statlength):
         CompleteStatCharts = statfile.readline()
         if Stats in CompleteStatCharts:
           break
+      statfile.seek(0)
       if Stats in statfile.read():
         Parameters["StatImage"] = CompleteStatCharts.replace(Stats + " - ", "")
       else:
@@ -161,19 +164,14 @@ async def on_message(message):
         print(value)
         if entry in ["Power", "Speed", "Intelligence", "Technique", "Skillfulness"]:
           Stats = "".join(data[user]["Stats"].values())
-          print(Stats)
           for i, v in enumerate(["Power", "Speed", "Intelligence", "Technique", "Skillfulness"]):
-            print(v, entry)
             if v == entry:
               Stats = Stats[:i] + value + Stats[i+1:]
-              print(Stats, "New")
           statfile = open("CompletedCharts.txt", "r")
           statlength = len(statfile.readlines())
           statfile.seek(0)
           for i in range(statlength):
             CompleteStatCharts = statfile.readline()
-            print(CompleteStatCharts, "readline")
-            print(Stats)
             if Stats in CompleteStatCharts:
               break
           statfile.seek(0)
@@ -183,7 +181,6 @@ async def on_message(message):
             with open("PendingCharts.txt", "w") as pending:
               pending.write("\n" + Stats)
           data[user]["Stats"][entry] = value
-          print(data[user]["StatImage"])
         else:
           data[user][entry] = value
         with open("chardata.json", "w") as datasheet:
