@@ -54,7 +54,7 @@ async def on_message(message):
       for n, i in enumerate(MainTemplate):
         await message.channel.send("Enter %s:" % i)
         if n == 9:
-          await message.channel.send("(Power, Speed, Intelligence, Technique, Skillfulness)")
+          await message.channel.send("(Power, Intelligence, Skillfulness, Technique, Speed)")
         def check(m):
           return m.author == message.author and m.channel == message.channel
         try:
@@ -64,7 +64,7 @@ async def on_message(message):
         else:
           Parameters[MainTemplate[n]] = "{.content}".format(reply)
       print(Parameters)
-      StatTemplate = ["Power", "Speed", "Intelligence", "Technique", "Skillfulness"]
+      StatTemplate = ["Power", "Intelligence", "Skillfulness", "Technique", "Speed"]
       StatList = Parameters["Stats"].strip("()").replace(" ", "").split(",")
       Parameters["Stats"] = {StatTemplate[i]:StatList[i] for i in range(len(StatList))}
       defaults = ["Undefined", "Undefined", "\u200b", "0", "D", "Undefined", "0", "\u200b", "Stats"]
@@ -80,7 +80,7 @@ async def on_message(message):
       if Stats in statfile.read():
         Parameters["StatImage"] = CompleteStatCharts.replace(Stats + " - ", "")
       else:
-        Parameters["StatImage"] = "https://i.imgur.com/xUWfFdw.png"
+        Parameters["StatImage"] = "https://i.imgur.com/ur63BX8.png"
         with open("PendingCharts.txt", "w") as pending:
           pending.write("\n" + Stats)
       statfile.close()
@@ -140,14 +140,14 @@ async def on_message(message):
       await message.channel.send("You are not permitted to modify characters! Please contact a Staff Member.")
     else:
       if message.content[9:13] == "help":
-        await message.channel.send("Mention the user, list the entry to be changed, then new value: as such -> MENTION|ENTRY(Anything from Name, Description, XP, Rank, Alignment, Money, Items, StatImage, Stats[Only one from Power, Speed, Intelligence, Technique, Skillfulness]|NEW VALUE. \n Ex. $modchar @ABC|Stats[Power]|2")
+        await message.channel.send("Modify the character sheet. Run the command like such: $modchar, and answer the prompts.")
       else:
         ModData = {}
         ModTemplate = ["User(Mention)", "Entry", "New Value"]
         for n, i in enumerate(ModTemplate):
           await message.channel.send("Enter the {abc}".format(abc=i))
           if n == 1:
-            await message.channel.send("Name, Description, XP, Rank, Alignment, Money, Items, StatImage, Stats[Only one from Power, Speed, Intelligence, Technique, Skillfulness]")
+            await message.channel.send("Name, Description, XP, Rank, Alignment, Money, Items, StatImage, Stats[Only one from Power, Intelligence, Skillfulness, Technique, Speed]")
           def check2(m):
             return m.author == message.author and m.channel == message.channel
           try:
@@ -162,9 +162,9 @@ async def on_message(message):
         entry = ModData["Entry"]
         value = ModData["New Value"]
         print(value)
-        if entry in ["Power", "Speed", "Intelligence", "Technique", "Skillfulness"]:
+        if entry in ["Power", "Intelligence", "Skillfulness", "Technique", "Speed"]:
           Stats = "".join(data[user]["Stats"].values())
-          for i, v in enumerate(["Power", "Speed", "Intelligence", "Technique", "Skillfulness"]):
+          for i, v in enumerate(["Power", "Intelligence", "Skillfulness", "Technique", "Speed"]):
             if v == entry:
               Stats = Stats[:i] + value + Stats[i+1:]
           statfile = open("CompletedCharts.txt", "r")
