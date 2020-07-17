@@ -78,7 +78,7 @@ async def on_message(message):
           break
       statfile.seek(0)
       if Stats in statfile.read():
-        Parameters["StatImage"] = CompleteStatCharts.replace(Stats + " - ", "")
+        Parameters["StatImage"] = CompleteStatCharts.replace(Stats + " - ", "").replace("\n", "")
       else:
         Parameters["StatImage"] = "https://i.imgur.com/ur63BX8.png"
         with open("PendingCharts.txt", "w") as pending:
