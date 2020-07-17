@@ -1,6 +1,6 @@
 Traceback (most recent call last):
   File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py", line 312, in _run_event
     await coro(*args, **kwargs)
-  File "main.py", line 71, in on_message
-    Stats = "".join(StatsList)
-NameError: name 'StatsList' is not defined
+  File "main.py", line 77, in on_message
+    if Stats in read(statfile):
+NameError: name 'read' is not defined
