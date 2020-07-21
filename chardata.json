@@ -104,5 +104,23 @@
       "Speed": "1"
     },
     "StatImage": "https://i.imgur.com/L5MnYgk.png"
+  },
+  "baked_potatoes_#8685": {
+    "UserID": "<@!328214823852572672>",
+    "Name": "Potat",
+    "Description": "He is Potat",
+    "XP": "42069",
+    "Rank": "S",
+    "Alignment": "Hero",
+    "Money": "0",
+    "Items": "French Press",
+    "Stats": {
+      "Power": "6",
+      "Intelligence": "6",
+      "Skillfulness": "6",
+      "Technique": "4",
+      "Speed": "2"
+    },
+    "StatImage": "https://i.imgur.com/SdSxr8d.png"
   }
 }

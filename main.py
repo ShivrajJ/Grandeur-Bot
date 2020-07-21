@@ -82,7 +82,7 @@ async def on_message(message):
       else:
         Parameters["StatImage"] = "https://i.imgur.com/ur63BX8.png"
         with open("PendingCharts.txt", "w") as pending:
-          pending.write("\n" + Stats)
+          pending.write("\n" + Stats + " " + str(client.get_user(int(Parameters["UserID"].strip("<@!>")))))
       statfile.close()
       for i, (k, v) in enumerate(Parameters.items()):
         if v == "0":
@@ -196,10 +196,17 @@ async def on_message(message):
           await message.channel.send("Invalid Entry. Please check the spelling and try again!")
   if message.content.find("$xp") == 0:
     if message.content[4:8] == "help":
-      await message.channel.send("Enter one of the following next to the commands: All, Hero, Villain, Rogue.")
+      await message.channel.send("Enter one of the following after the command: All, Hero, Villain, Rogue.")
     else:
-      category = message.content[4:].lower()
-      category = category[0].upper() + category[1:]
+      await message.channel.send("All, Hero, Villain or Rogue?")
+      def check3(m):
+        return m.author == message.author and m.channel == message.channel and m.content.lower().capitalize() in ["All", "Hero", "Villain", "Rogue"]
+      try:
+        reply = await client.wait_for("message", timeout = 50.0, check = check3)
+      except asyncio.TimeoutError:
+        await message.channel.send("Timed Out! Please Try Again.")
+      else:
+        category = reply
       with open("chardata.json", "r") as datasheet:
         data = json.load(datasheet)
       if category == "All":
@@ -208,7 +215,7 @@ async def on_message(message):
         tabledata = {data[i]["Name"]:(data[i]["XP"], data[i]["Alignment"], data[i]["Rank"]) for i in data.keys() if data[i]["Alignment"] == category}
       sortdata = []
       for key, value in sorted(tabledata.items(), key = lambda item: item[1][0], reverse = True):
-        sortdata.append((key, value))
+        sortdata.append((key, value)) #Sorting Entries by XP. Highest first.
       xpval = []
       for i in tabledata.values():
         xpval.append(i[0])
@@ -218,7 +225,7 @@ async def on_message(message):
       maxlenalign = len(" Alignment ")
       table = "╔══════╦" + "═"*maxlenname + "╤" + "═"*maxlenxp +"╤" + "═"*maxlenalign + "╤══════╗\n║ S.No ║ Name"+" "*(maxlenname-5)+"│ XP"+" "*(maxlenxp-3)+ "│ Alignment │ Rank ║\n╠══════╬"+"═"*maxlenname+"╪"+"═"*maxlenxp+"╪═══════════╪══════╣\n"
       for i, x in enumerate(sortdata):
-        table += "║ " + str(i+1) + "    ║" + " "*int(((maxlenname - len(x[0]))/2)) + x[0] + " "*int(((maxlenname - len(x[0]))/2)) + "│" + " "*math.ceil((maxlenxp - len(x[1][0]))/2) + str(x[1][0]) + " "*int(((maxlenxp - len(x[1][0]))/2)) +"| "+ x[1][1] +" "*(maxlenalign-len(x[1][1])-1)+ "│ " + x[1][2] + "    ║\n"
+        table += "║ " + str(i+1) + "    ║" + " "*int(((maxlenname - len(x[0]))/2)) + x[0] + " "*int(((maxlenname - len(x[0]))/2)+maxlenname%2) + "│" + " "*math.ceil((maxlenxp - len(x[1][0]))/2) + str(x[1][0]) + " "*int(((maxlenxp - len(x[1][0]))/2)+maxlenxp%2) +"| "+ x[1][1] +" "*(maxlenalign-len(x[1][1])-1)+ "│ " + x[1][2] + "    ║\n"
 
         print(math.ceil((maxlenxp - len(x[1][0]))/2))
         if i+1 < len(sortdata):
