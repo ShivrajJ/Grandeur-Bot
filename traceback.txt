@@ -1,7 +1,7 @@
 Traceback (most recent call last):
   File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py", line 312, in _run_event
     await coro(*args, **kwargs)
-  File "main.py", line 115, in on_message
+  File "main.py", line 214, in on_message
     data = json.load(datasheet)
   File "/usr/lib/python3.8/json/__init__.py", line 293, in load
     return loads(fp.read(),
@@ -11,4 +11,4 @@ Traceback (most recent call last):
     obj, end = self.raw_decode(s, idx=_w(s, 0).end())
   File "/usr/lib/python3.8/json/decoder.py", line 353, in raw_decode
     obj, end = self.scan_once(s, idx)
-json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 108 column 1 (char 2805)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 107 column 3 (char 2803)

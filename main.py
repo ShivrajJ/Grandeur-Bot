@@ -165,6 +165,8 @@ async def on_message(message):
           with open("chardata.json", "r") as datasheet:
             data = json.load(datasheet)
           entry = ModData["Entry"].capitalize()
+          if entry == "Xp":
+            entry = "XP"
           value = ModData["New Value"]
           print(value)
           if entry in ["Power", "Intelligence", "Skillfulness", "Technique", "Speed"]:
@@ -206,7 +208,8 @@ async def on_message(message):
       except asyncio.TimeoutError:
         await message.channel.send("Timed Out! Please Try Again.")
       else:
-        category = reply
+        category = reply.content
+      print(category)
       with open("chardata.json", "r") as datasheet:
         data = json.load(datasheet)
       if category == "All":
@@ -225,9 +228,11 @@ async def on_message(message):
       maxlenalign = len(" Alignment ")
       table = "╔══════╦" + "═"*maxlenname + "╤" + "═"*maxlenxp +"╤" + "═"*maxlenalign + "╤══════╗\n║ S.No ║ Name"+" "*(maxlenname-5)+"│ XP"+" "*(maxlenxp-3)+ "│ Alignment │ Rank ║\n╠══════╬"+"═"*maxlenname+"╪"+"═"*maxlenxp+"╪═══════════╪══════╣\n"
       for i, x in enumerate(sortdata):
-        table += "║ " + str(i+1) + "    ║" + " "*int(((maxlenname - len(x[0]))/2)) + x[0] + " "*int(((maxlenname - len(x[0]))/2)+maxlenname%2) + "│" + " "*math.ceil((maxlenxp - len(x[1][0]))/2) + str(x[1][0]) + " "*int(((maxlenxp - len(x[1][0]))/2)+maxlenxp%2) +"| "+ x[1][1] +" "*(maxlenalign-len(x[1][1])-1)+ "│ " + x[1][2] + "    ║\n"
+        nameSpaceLen = (maxlenname - len(x[0]))
+        xpSpaceLen = (maxlenxp - len(x[1][0]))
+        alignSpaceLen = (maxlenalign - len(x[1][1]))
+        table += "║ " + str(i+1) + "    ║" + " "*int((nameSpaceLen/2)) + x[0] + " "*int((nameSpaceLen/2)+nameSpaceLen%2) + "│" + " "*math.ceil(xpSpaceLen/2) + str(x[1][0]) + " "*int((xpSpaceLen/2)) +"| "+ x[1][1] +" "*(alignSpaceLen-1)+ "│ " + x[1][2] + "    ║\n"
 
-        print(math.ceil((maxlenxp - len(x[1][0]))/2))
         if i+1 < len(sortdata):
           table += "╟──────╫" + "─"*maxlenname + "┼"+ "─"*maxlenxp + "┼"+ "─"*maxlenalign +"┼──────╢\n"
         else:
