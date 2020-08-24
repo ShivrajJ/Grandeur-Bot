@@ -6,3 +6,4 @@
 66666 - https://i.imgur.com/anwKH55.png
 16666 - https://i.imgur.com/9ELD7Qx.png
 Default - https://i.imgur.com/ur63BX8.png
+ChardataStorage -https://api.jsonbin.io/b/5f43fa5c514ec5112d0d5309

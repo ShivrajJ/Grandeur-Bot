@@ -15,6 +15,10 @@ client = discord.Client()
 async def on_ready():
   print("I'm in!")
   print(client.user)
+  while True:
+    with open("chardata.json", "r") as file, open("chardatabackup.json", "w") as backup:
+      json.dump(json.load(file), backup)
+    await asyncio.sleep(3600)
 
 #@client.event
 #async def on_error(on_message, ctx):
