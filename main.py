@@ -147,11 +147,11 @@ async def on_message(message):
           await message.channel.send("Timed out! Try again.")
         else:
           if "{.content}".format(reply).lower() == "yes":
-            with open("chardata.json", "r") as datasheet:
-              data = json.load(datasheet)
-            data[str(client.get_user(int(Parameters["UserID"].strip("<@!>"))))] = Parameters
-            with open("chardata.json", "w") as datasheet:
-              json.dump(data, datasheet)
+            with open("chardata.json", "ab") as datasheet:
+              datasheet.seek(-2, 2)
+              originalString = ",\n\""+str(client.get_user(int(Parameters["UserID"].strip("<@!>"))))+"\":"+json.dumps(Parameters)
+              byteString = originalString.encode("utf-8")
+              datasheet.write(byteString)
             await message.channel.send("Registered successfully!")
       else:
         await message.channel.send("Exited Successfully. Run the command again if you still wish to add a character.")
