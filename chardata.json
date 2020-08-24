@@ -1,126 +1,265 @@
 {
-  "Shivraj#3373": {
-    "Name": "Nightmare",
-    "Description": "ABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCD",
-    "XP": "2500",
-    "Money": "50000",
-    "Items": "0",
-    "StatImage": "https://media.discordapp.net/attachments/190492896015810571/690931797672067142/unknown.png?width=536&height=469",
-    "Stats": {
-      "Power": "1",
-      "Speed": "4",
-      "Intelligence": "5",
-      "Technique": "2",
-      "Skillfulness": "3"
+    "Leader Of Babies#8540": {
+        "UserID": "<@!237928154273021952>",
+        "Name": "Mark Anthony Smith",
+        "Description": "A waiter working and living for minimum wage",
+        "XP": "1",
+        "Rank": "D",
+        "Alignment": "Civilian",
+        "Money": "What's that?",
+        "Items": "A pocket knife",
+        "Stats": {
+            "Power": "0",
+            "Intelligence": "2",
+            "Skillfulness": "1",
+            "Technique": "2",
+            "Speed": "0"
+        },
+        "StatImage": "https://i.imgur.com/ur63BX8.png"
     },
-    "Rank": "S",
-    "Alignment": "Villain"
-  },
-  "Tatsu#8792": {
-    "Name": "Mammoth",
-    "Description": "ABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCD",
-    "XP": "1600",
-    "Money": "3109",
-    "Items": "Orb of Death, Hammer, Waraxe.",
-    "StatImage": "https://media.discordapp.net/attachments/190492896015810571/690931797672067142/unknown.png?width=536&height=469",
-    "Stats": {
-      "Power": "6",
-      "Speed": "5",
-      "Intelligence": "4",
-      "Technique": "5",
-      "Skillfulness": "4"
+    "JTD3#2092": {"UserID": "<@!366350762437246981>", "Name": "Solid X", "Description": "The greatest Thief in all of Titan City!", "XP": "585", "Rank": "C", "Alignment": "Rogue", "Money": "0", "Items": "None", "Stats": {"Power": "1", "Intelligence": "2", "Skillfulness": "3", "Technique": "2", "Speed": "2"}, "StatImage": "https://i.imgur.com/ur63BX8.png"
     },
-    "Rank": "S",
-    "Alignment": "Hero"
-  },
-  "Weather Bot#9029": {
-    "UserID": "<@!729209904027533353>",
-    "Name": "Weather Man",
-    "Description": "He is Weather Man!",
-    "XP": "100",
-    "Rank": "A",
-    "Alignment": "Hero",
-    "Money": "9999",
-    "Items": "Umbrella",
-    "StatImage": "https://i.imgur.com/xUWfFdw.png",
-    "Stats": {
-      "Power": "2",
-      "Speed": "2",
-      "Intelligence": "4",
-      "Technique": "5",
-      "Skillfulness": "5"
+    "Shivraj#3373": {
+        "UserID": "<@124102469646024704>",
+        "Name": "Zenith",
+        "Description": "The current Top Hero in Titan",
+        "XP": "100",
+        "Rank": "A3",
+        "Alignment": "Hero",
+        "Money": "80",
+        "Items": "League Ring, Hero Suit",
+        "Stats": {
+            "Power": "6",
+            "Intelligence": "3",
+            "Skillfulness": "5",
+            "Technique": "5",
+            "Speed": "5"
+        },
+        "StatImage": "https://i.imgur.com/ur63BX8.png"
+    },
+    "Tartarus#5093": {
+        "UserID":
+        "<@!313024849314578442>",
+        "Name":
+        "Lycoris",
+        "Description":
+        "Zenith's sidekick. A young healer with dreams to become a doctor.",
+        "XP":
+        "1",
+        "Rank":
+        "B",
+        "Alignment":
+        "Sidekick",
+        "Money":
+        "100",
+        "Items":
+        "Aurora and Dawn, Blackfyre, simple med kit, instant hair dye, sidekick garb",
+        "Stats": {
+            "Power": "2",
+            "Intelligence": "5",
+            "Skillfulness": "3",
+            "Technique": "3",
+            "Speed": "2"
+        },
+        "StatImage":
+        "https://i.imgur.com/ur63BX8.png"
+    },
+    "dutchkiller69#9262": {
+        "UserID":
+        "<@!327354503563051011>",
+        "Name":
+        "Jaeger",
+        "Description":
+        "Superpowered mercenary for hire, specialising in mutants. In his free time he mostly annoys other people",
+        "XP":
+        "30",
+        "Rank":
+        "D",
+        "Alignment":
+        "Rogue",
+        "Money":
+        "0",
+        "Items":
+        "-Armoured Suit (20kn, 800\u00b0c resistance)\n-Glider cape (5kn)\n-3 daggers (15kn each)\n-2 desert eagles (undetermined)\n-Moon shaped blade (25kn)\n-Mask with several functions\n-Tracker with 2 chips.\n-Foldable staff (kn determined by strength)",
+        "Stats": {
+            "Power": "0",
+            "Intelligence": "1",
+            "Skillfulness": "2",
+            "Technique": "1",
+            "Speed": "1"
+        },
+        "StatImage":
+        "https://i.imgur.com/ur63BX8.png"
+    },
+    "Greevol#7302": {
+        "UserID": "<@!280686912107315200>",
+        "Name": "Lyon Johannes",
+        "Description": "World renowned famous musician",
+        "XP": "520",
+        "Rank": "C",
+        "Alignment": "Villain",
+        "Money": "A lot",
+        "Items": "His Mom's red sportscar",
+        "Stats": {
+            "Power": "2",
+            "Intelligence": "3",
+            "Skillfulness": "2",
+            "Technique": "1",
+            "Speed": "2"
+        },
+        "StatImage": "https://i.imgur.com/ur63BX8.png"
+    },
+    "nyxie#2833": {
+        "UserID":
+        "<@!376563261317054474>",
+        "Name":
+        "Veronica Taylor (Seyton)",
+        "Description":
+        "Owner of the Illusion bar with a dark past and heavenly powers",
+        "XP":
+        "550",
+        "Rank":
+        "C",
+        "Alignment":
+        "Villian",
+        "Money":
+        "0",
+        "Items":
+        "three kris daggers. They are light enough to be used as throwing knives, Steel baseball bat, A book filled with empty pages it\u2019s titled: Happy, A necklace with a cross.",
+        "Stats": {
+            "Power": "1",
+            "Intelligence": "2",
+            "Skillfulness": "3",
+            "Technique": "3",
+            "Speed": "1"
+        },
+        "StatImage":
+        "https://i.imgur.com/ur63BX8.png"
+    },
+    "Salt#0333": {
+        "UserID":
+        "<@!305195849133064192>",
+        "Name":
+        "Alignment",
+        "Description":
+        "The desperate rookie thief of Titan",
+        "XP":
+        "45",
+        "Rank":
+        "D",
+        "Alignment":
+        "Rogue",
+        "Money":
+        "$72",
+        "Items":
+        "Tesla Gauntlets, Automatic Induction Device Mk1, Hardline Helmet, USBees",
+        "Stats": {
+            "Power": "0",
+            "Intelligence": "2",
+            "Skillfulness": "2",
+            "Technique": "2",
+            "Speed": "0"
+        },
+        "StatImage":
+        "https://i.imgur.com/ur63BX8.png"
+    },
+    "king nerd#0202": {
+        "UserID":
+        "<@!467776846046691369>",
+        "Name":
+        "Alahn Al Mikii (Jolt)",
+        "Description":
+        "One of Titans brave heroes, fighting to protect the city and its people.",
+        "XP":
+        "1150",
+        "Rank":
+        "B",
+        "Alignment":
+        "Hero",
+        "Money":
+        "0",
+        "Items":
+        "steel lined boots, interior linked to the bottom by metal bars allowing him to push electricity through the bottoms of his boots. Gloves with copper chainmail palms, hero garb",
+        "Stats": {
+            "Power": "4",
+            "Intelligence": "5",
+            "Skillfulness": "3",
+            "Technique": "1",
+            "Speed": "2"
+        },
+        "StatImage":
+        "https://i.imgur.com/ur63BX8.png"
+    },
+    "frick#5172": {
+        "UserID":
+        "<@!389608227190341662>",
+        "Name":
+        "Paisley Adelia Terrence (Xaphan)",
+        "Description":
+        "The dreaded villianess working with the Number 1 villian: South.",
+        "XP":
+        "1950",
+        "Rank":
+        "A",
+        "Alignment":
+        "Villian",
+        "Money":
+        "0",
+        "Items":
+        "A big sword",
+        "Stats": {
+            "Power": "6",
+            "Intelligence": "5",
+            "Skillfulness": "5",
+            "Technique": "4",
+            "Speed": "4"
+        },
+        "StatImage":
+        "https://i.imgur.com/ur63BX8.png"
+    },
+    "RegentPuppet#8216": {
+        "UserID":
+        "<@!310863110951010306>",
+        "Name":
+        "HK-57 \"Regent\" (Prometheus)",
+        "Description":
+        "A forgotten relic from a war long past brought back into a new era.",
+        "XP":
+        "540",
+        "Rank":
+        "C",
+        "Alignment":
+        "Villian",
+        "Money":
+        "0",
+        "Items":
+        "Litteraly a fucking robot",
+        "Stats": {
+            "Power": "3",
+            "Intelligence": "1",
+            "Skillfulness": "3",
+            "Technique": "2",
+            "Speed": "1"
+        },
+        "StatImage":
+        "https://i.imgur.com/ur63BX8.png"
+    },
+    "Hiruko.#3570": {
+        "UserID": "<@!238309088260390912>",
+        "Name": "Song Mingi (Sharp Kitsune)",
+        "Description": "A very sharp villian",
+        "XP": "0",
+        "Rank": "D",
+        "Alignment": "Villian",
+        "Money": "0",
+        "Items": "A mask",
+        "Stats": {
+            "Power": "1",
+            "Intelligence": "1",
+            "Skillfulness": "1",
+            "Technique": "1",
+            "Speed": "1"
+        },
+        "StatImage": "https://i.imgur.com/qbCeKNO.png"
     }
-  },
-  "Tupperbox#4754": {
-    "UserID": "<@!431544605209788416>",
-    "Name": "TupperBoi",
-    "Description": "IDK",
-    "XP": "99",
-    "Rank": "A",
-    "Alignment": "S",
-    "Money": "99",
-    "Items": "ABC",
-    "StatImage": "https://i.imgur.com/xUWfFdw.png",
-    "Stats": {
-      "Power": "2",
-      "Speed": "4",
-      "Intelligence": "5",
-      "Technique": "2",
-      "Skillfulness": "5"
-    }
-  },
-  "Tickets#6981": {
-    "UserID": "<@!508391840525975553>",
-    "Name": "Tickets",
-    "Description": "Ticket Bot",
-    "XP": "9999",
-    "Rank": "A",
-    "Alignment": "Hero",
-    "Money": "9091",
-    "Items": "Ticket",
-    "Stats": {
-      "Power": "6",
-      "Speed": "6",
-      "Intelligence": "6",
-      "Technique": "6",
-      "Skillfulness": "6"
-    },
-    "StatImage": "https://i.imgur.com/anwKH55.png"
-  },
-  "Grandeur Bot#3959": {
-    "UserID": "<@!653648671564496917>",
-    "Name": "Grandeur Bot",
-    "Description": "This is the server bot",
-    "XP": "9999999",
-    "Rank": "S",
-    "Alignment": "Hero",
-    "Money": "999",
-    "Items": "Hammer",
-    "Stats": {
-      "Power": "2",
-      "Intelligence": "3",
-      "Skillfulness": "5",
-      "Technique": "2",
-      "Speed": "1"
-    },
-    "StatImage": "https://i.imgur.com/L5MnYgk.png"
-  },
-  "baked_potatoes_#8685": {
-    "UserID": "<@!328214823852572672>",
-    "Name": "Potat",
-    "Description": "He is Potat",
-    "XP": "42069",
-    "Rank": "S",
-    "Alignment": "Hero",
-    "Money": "0",
-    "Items": "French Press",
-    "Stats": {
-      "Power": "6",
-      "Intelligence": "6",
-      "Skillfulness": "6",
-      "Technique": "4",
-      "Speed": "2"
-    },
-    "StatImage": "https://i.imgur.com/SdSxr8d.png"
-  }
 }
