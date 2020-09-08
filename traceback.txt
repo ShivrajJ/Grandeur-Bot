@@ -1,6 +1,6 @@
 Traceback (most recent call last):
   File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py", line 312, in _run_event
     await coro(*args, **kwargs)
-  File "main.py", line 244, in on_message
-    print(str(user))
-UnboundLocalError: local variable 'user' referenced before assignment
+  File "main.py", line 346, in on_message
+    data[user][entry] = value
+KeyError: 'frick#5172'

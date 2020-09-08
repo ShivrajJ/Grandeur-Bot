@@ -317,7 +317,7 @@ async def on_message(message):
           for k,v in data.items():
             if v["Name"] == ModData["Character Name"]:
               userID = v["UserID"]
-          user = str(client.get_user(int(userID.strip("<@!>"))))
+          user = userID
           entry = ModData["Entry"].capitalize()
           if entry == "Xp":
             entry = "XP"
