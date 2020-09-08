@@ -39,7 +39,7 @@
         "UserID": "<@124102469646024704>",
         "Name": "Zenith",
         "Description": "The current Top Hero in Titan",
-        "XP": "100",
+        "XP": "2030",
         "Rank": "A3",
         "Alignment": "Hero",
         "Money": "80",
@@ -61,7 +61,7 @@
         "Description":
         "Zenith's sidekick. A young healer with dreams to become a doctor.",
         "XP":
-        "1",
+        "2040",
         "Rank":
         "B",
         "Alignment":
@@ -88,7 +88,7 @@
         "Description":
         "Superpowered mercenary for hire, specialising in mutants. In his free time he mostly annoys other people",
         "XP":
-        "30",
+        "125",
         "Rank":
         "D",
         "Alignment":
@@ -111,7 +111,7 @@
         "UserID": "<@!280686912107315200>",
         "Name": "Lyon Johannes",
         "Description": "World renowned famous musician",
-        "XP": "520",
+        "XP": "630",
         "Rank": "C",
         "Alignment": "Villain",
         "Money": "A lot",
@@ -241,7 +241,7 @@
         "Description":
         "A forgotten relic from a war long past brought back into a new era.",
         "XP":
-        "540",
+        "570",
         "Rank":
         "C",
         "Alignment":
