@@ -1,0 +1,225 @@
+{
+  "Relations": {
+    "1": {
+      "Country1": "Alfenheim",
+      "Country2": "Vanaheim",
+      "Relation": "Amicable"
+    },
+    "2": {
+      "Country1": "Alfenheim",
+      "Country2": "Viridi",
+      "Relation": "Amicable"
+    },
+    "3": {
+      "Country1": "Alfenheim",
+      "Country2": "Summerwind",
+      "Relation": "Amicable"
+    },
+    "4": {
+      "Country1": "Vanaheim",
+      "Country2": "Alfenheim",
+      "Relation": "Amicable"
+    },
+    "5": {
+      "Country1": "Vanaheim",
+      "Country2": "Viridi",
+      "Relation": "Amicable"
+    },
+    "6": {
+      "Country1": "Vanaheim",
+      "Country2": "Summerwind",
+      "Relation": "Amicable"
+    },
+    "7": {
+      "Country1": "Viridi",
+      "Country2": "Alfenheim",
+      "Relation": "Amicable"
+    },
+    "8": {
+      "Country1": "Viridi",
+      "Country2": "Vanaheim",
+      "Relation": "Amicable"
+    },
+    "9": {
+      "Country1": "Viridi",
+      "Country2": "Summerwind",
+      "Relation": "Amicable"
+    },
+    "10": {
+      "Country1": "Summerwind",
+      "Country2": "Alfenheim",
+      "Relation": "Amicable"
+    },
+    "11": {
+      "Country1": "Summerwind",
+      "Country2": "Vanaheim",
+      "Relation": "Amicable"
+    },
+    "12": {
+      "Country1": "Summerwind",
+      "Country2": "Viridi",
+      "Relation": "Amicable"
+    }
+  },
+  "Countries": {
+    "1": {
+      "Country": "Alfenheim",
+      "Wealth": 3770,
+      "Tax": 500,
+      "Debt": 0,
+      "Monthly Installment": 0
+    },
+    "2": {
+      "Country": "Vanaheim",
+      "Wealth": -8600,
+      "Tax": 500,
+      "Debt": 0,
+      "Monthly Installment": 0
+    },
+    "3": {
+      "Country": "Viridi",
+      "Wealth": -1960,
+      "Tax": 500,
+      "Debt": 0,
+      "Monthly Installment": 0
+    },
+    "4": {
+      "Country": "Summerwind",
+      "Wealth": -5000,
+      "Tax": 500,
+      "Debt": 0,
+      "Monthly Installment": 0
+    },
+    "5": {
+      "Country": "Ironhold",
+      "Wealth": 0,
+      "Tax": -2000,
+      "Debt": 0,
+      "Monthly Installment": 0
+    }
+  },
+  "Trade": {
+    "1": {
+      "Commodity": "Wine",
+      "Imported From": "Alfenheim",
+      "Exported To": "Vanaheim",
+      "Quantity": 100,
+      "Price": 10,
+      "Total Cost": 1000
+    },
+    "3": {
+      "Commodity": "Wood",
+      "Imported From": "Alfenheim",
+      "Exported To": "Vanaheim",
+      "Quantity": 400,
+      "Price": 4,
+      "Total Cost": 1600
+    },
+    "4": {
+      "Commodity": "Mead",
+      "Imported From": "Vanaheim",
+      "Exported To": "Alfenheim",
+      "Quantity": 100,
+      "Price": 10,
+      "Total Cost": 1000
+    },
+    "5": {
+      "Commodity": "Gemstones",
+      "Imported From": "Alfenheim",
+      "Exported To": "Summerwind",
+      "Quantity": 75,
+      "Price": 50,
+      "Total Cost": 3750
+    },
+    "6": {
+      "Commodity": "Leather",
+      "Imported From": "Alfenheim",
+      "Exported To": "Vanaheim",
+      "Quantity": 50,
+      "Price": 2,
+      "Total Cost": 100
+    },
+    "8": {
+      "Commodity": "Sand",
+      "Imported From": "Summerwind",
+      "Exported To": "Alfenheim",
+      "Quantity": 100,
+      "Price": 30,
+      "Total Cost": 3000
+    },
+    "9": {
+      "Commodity": "Pure Water",
+      "Imported From": "Viridi",
+      "Exported To": "Alfenheim",
+      "Quantity": 3,
+      "Price": 20,
+      "Total Cost": 60
+    },
+    "10": {
+      "Commodity": "Mead",
+      "Imported From": "Vanaheim",
+      "Exported To": "Viridi",
+      "Quantity": 5,
+      "Price": 10,
+      "Total Cost": 50
+    },
+    "11": {
+      "Commodity": "Weapons",
+      "Imported From": "Ironhold",
+      "Exported To": "Alfenheim",
+      "Quantity": 2,
+      "Price": 100,
+      "Total Cost": 200
+    },
+    "12": {
+      "Commodity": "Pure Water",
+      "Imported From": "Viridi",
+      "Exported To": "Ironhold",
+      "Quantity": 2,
+      "Price": 20,
+      "Total Cost": 40
+    }
+  },
+  "Commodities": {
+    "1": {
+      "Commodity": "Wine",
+      "Source": "Alfenheim",
+      "Price": 10
+    },
+    "2": {
+      "Commodity": "Leather",
+      "Source": "Alfenheim",
+      "Price": 2
+    },
+    "3": {
+      "Commodity": "Wood",
+      "Source": "Alfenheim",
+      "Price": 4
+    },
+    "4": {
+      "Commodity": "Mead",
+      "Source": "Vanaheim",
+      "Price": 10
+    },
+    "5": {
+      "Commodity": "Gemstones",
+      "Source": "Alfenheim",
+      "Price": 50
+    },
+    "6": {
+      "Commodity": "Pure Water",
+      "Source": "Viridi",
+      "Price": 20
+    },
+    "7": {
+      "Commodity": "Sand",
+      "Source": "Summerwind",
+      "Price": 30
+    },
+    "8": {
+      "Commodity": "Weapons",
+      "Source": "Ironhold",
+      "Price": 100
+    }
+  }
+}

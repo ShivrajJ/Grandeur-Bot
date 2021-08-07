@@ -1,0 +1,45 @@
+{
+  "January": {
+    "1" : "Some Festival"
+  },
+  "February": {
+    "1" : "Some Festival"
+  },
+  "March": {
+    "1" : "Some Festival"
+  },
+  "April": {
+    "1" : "Some Festival"
+  },
+  "May": {
+    "1": "Important Festival",
+    "2": "Second Important Festival",
+    "5" : "Dwarfzahar Depreciation Day",
+    "16" : "Ophelia's Tea Day",
+    "18" : "Baeleth Appreciation Day",
+    "20": "Tarasynora Simp Day",
+    "24" : "Broodsday",
+    "29" : "Iron Festival"
+  },
+  "June": {
+    "1" : "Some Festival"
+  },
+  "July": {
+    "1" : "Some Festival"
+  },
+  "August": {
+    "1" : "Some Festival"
+  },
+  "September": {
+    "1" : "Some Festival"
+  },
+  "October": {
+    "1" : "Some Festival"
+  },
+  "November": {
+    "1" : "Some Festival"
+  },
+  "December": {
+    "1" : "Some Festival"
+  }
+}

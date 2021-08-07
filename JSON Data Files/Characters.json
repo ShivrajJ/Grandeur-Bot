@@ -1,0 +1,167 @@
+{
+  "_default": {
+    "1": {
+      "UserID": "<@!124102469646024704>",
+      "Name": "Illumi F\u00ebanor",
+      "Description": "The Alfen King",
+      "XP": "3200",
+      "Alignment": "Imperial Mage",
+      "Money": "4000",
+      "Elixir": "2000",
+      "Items": "Sword, Flute",
+      "Stats": {
+        "Physical Power": "150",
+        "Physical Speed": "250",
+        "Physical Durability": "200",
+        "Casting Speed": "400",
+        "Perception": "400",
+        "Mana Rank": "900"
+      },
+      "Rank": "Wizard",
+      "Fame Points": "400",
+      "Fame Rank": "Guardian",
+      "Image": "https://cdn.discordapp.com/attachments/825114740707688488/833684726371975249/66826f3c3bd285e2bbd239369f6da34a.jpg",
+      "Max Mana": "900",
+      "Mana": "900"
+    },
+    "2": {
+      "UserID": "<@!237928154273021952>",
+      "Name": "Dwarfzahar Costel",
+      "Description": "The Gaian Dwarf",
+      "XP": "3200",
+      "Fame Points": "50",
+      "Alignment": "Imperial Mage",
+      "Money": "5000",
+      "Elixir": "1000",
+      "Items": "Sword, Royal Stool",
+      "Stats": {
+        "Physical Power": "200",
+        "Physical Speed": "250",
+        "Physical Durability": "250",
+        "Casting Speed": "400",
+        "Perception": "400",
+        "Mana Rank": "800"
+      },
+      "Image": "https://cdn.discordapp.com/attachments/826192586849910805/826769772431671337/Al.jpg",
+      "Rank": "Wizard",
+      "Fame Rank": "Mage",
+      "Max Mana": "800"
+    },
+    "3": {
+      "UserID": "<@!366350762437246981>",
+      "Name": "Ferro Tourn Felman Chad",
+      "Description": "The Nordic King",
+      "XP": "3000",
+      "Fame Points": "50",
+      "Alignment": "Imperial Mage",
+      "Money": "1000",
+      "Elixir": "1000",
+      "Items": "Sword",
+      "Stats": {
+        "Physical Power": "450",
+        "Physical Speed": "200",
+        "Physical Durability": "400",
+        "Casting Speed": "400",
+        "Perception": "400",
+        "Mana Rank": "450"
+      },
+      "Image": "https://cdn.discordapp.com/attachments/826223964505243709/826225775882928168/29e029b892441ad23ce19d246bb213aa.jpg",
+      "Rank": "Wizard",
+      "Fame Rank": "Mage",
+      "Max Mana": "450",
+      "Mana": "450"
+    },
+    "4": {
+      "UserID": "<@!565960962579103774>",
+      "Name": "Umbra Viserion",
+      "Description": "Shady Man",
+      "XP": "3000",
+      "Fame Points": "50",
+      "Alignment": "Dark Mage",
+      "Money": "1000",
+      "Elixir": "1000",
+      "Max Mana": "750",
+      "Items": "Chains",
+      "Stats": {
+        "Physical Power": "A",
+        "Physical Speed": "A",
+        "Physical Durability": "A",
+        "Casting Speed": "A",
+        "Perception": "A",
+        "Mana Rank": "A"
+      },
+      "Image": "https://cdn.discordapp.com/attachments/825114740707688488/834079582583390258/images_-_2021-04-20T155404.362.jpeg",
+      "Rank": "Wizard",
+      "Fame Rank": "Sorceror"
+    },
+    "5": {
+      "UserID": "<@!389608227190341662>",
+      "Name": "Arbor Ophelia",
+      "Description": "The Imperial Queen",
+      "XP": "4500",
+      "Fame Points": "400",
+      "Alignment": "Imperial Mage",
+      "Money": "4000",
+      "Elixir": "2000",
+      "Max Mana": "1100",
+      "Items": "Staff",
+      "Stats": {
+        "Physical Power": "210",
+        "Physical Speed": "300",
+        "Physical Durability": "260",
+        "Casting Speed": "500",
+        "Perception": "500",
+        "Mana Rank": "1100"
+      },
+      "Image": "https://cdn.discordapp.com/attachments/825114740707688488/834090492601172038/unknown.png",
+      "Rank": "Archwizard",
+      "Fame Rank": "Guardian"
+    },
+    "6": {
+      "UserID": "<@!327354503563051011>",
+      "Name": "Arbor Tyrasynora Nimwe",
+      "Description": "Plant Mommy",
+      "XP": "1200",
+      "Fame Points": "20",
+      "Alignment": "Imperial Mage",
+      "Money": "200",
+      "Elixir": "300",
+      "Max Mana": "450",
+      "Items": "Plants",
+      "Stats": {
+        "Physical Power": "D",
+        "Physical Speed": "C",
+        "Physical Durability": "D",
+        "Casting Speed": "C",
+        "Perception": "C",
+        "Mana Rank": "C"
+      },
+      "Image": "https://cdn.discordapp.com/attachments/826969301801369610/826970338738569276/XJeVclgglPVK0Scy1VOPuY1AXvLhpQFEWq2VD6q3.jpeg.jpg",
+      "Rank": "Disciple",
+      "Fame Rank": "Mage"
+    },
+    "7": {
+      "UserID": "<@!280686912107315200>",
+      "Name": "Enki",
+      "Description": "Son of the Land",
+      "XP": "3000",
+      "Fame Points": "100",
+      "Alignment": "Dark Mage",
+      "Money": "5",
+      "Elixir": "200",
+      "Max Mana": "900",
+      "Items": "Trident",
+      "Stats": {
+        "Physical Power": "150",
+        "Physical Speed": "250",
+        "Physical Durability": "200",
+        "Casting Speed": "400",
+        "Perception": "400",
+        "Mana Rank": "900"
+      },
+      "Image": "https://cdn.discordapp.com/attachments/848608935719862302/848627922843598868/9236a2bfa6097550995dbd8f93736ab4.png",
+      "Rank": "Wizard",
+      "Fame Rank": "Agitator"
+    }
+  }
+}

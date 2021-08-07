@@ -1,11 +1,8 @@
 Traceback (most recent call last):
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py", line 333, in _run_event
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/client.py", line 343, in _run_event
     await coro(*args, **kwargs)
-  File "main.py", line 152, in on_message_delete
-    await channel.send(embed=embed)
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/abc.py", line 904, in send
-    data = await state.http.send_message(channel.id, content, tts=tts, embed=embed,
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/http.py", line 245, in request
-    raise HTTPException(r, data)
-discord.errors.HTTPException: 400 Bad Request (error code: 50035): Invalid Form Body
-In embed.fields.0.value: Must be 1024 or fewer in length.
+  File "main.py", line 200, in on_raw_reaction_add
+    await member.add_roles([role1, role2, role3], reason = "Passed the Test.")
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/discord/member.py", line 676, in add_roles
+    await req(guild_id, user_id, role.id, reason=reason)
+AttributeError: 'list' object has no attribute 'id'
