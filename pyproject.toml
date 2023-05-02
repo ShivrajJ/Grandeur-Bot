@@ -7,4 +7,4 @@ description = "ABC"
 [tool.poetry.dependencies]
 "discord.py" = "*"
 python = "^3.8"
-flask = "^1.1"
+flask = "^2.3"
